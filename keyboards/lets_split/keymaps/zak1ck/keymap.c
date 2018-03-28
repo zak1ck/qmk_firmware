@@ -116,10 +116,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_G_L] = KEYMAP( \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,		XXXXXXX,		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,		TO(_NORMAL),	XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_GRIM),	TO(_G_D),		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,		XXXXXXX,		XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   TO(_NORMAL), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_GRIM), TO(_G_D),    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
 
 /* Game Default
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_G_D] = KEYMAP( \
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, KC_Q,    KC_W,    KC_E,    XXXXXXX, TO(_G_L), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    TO(_G_L), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   KC_ESC,  KC_A,    KC_S,    KC_D,    XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
@@ -157,7 +157,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,   XXXXXXX, KC_S, KC_I, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX,  XXXXXXX, KC_M, KC_9, KC_0,    KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 )
-
 
 };
 
@@ -202,30 +201,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-	case G_L:
-	  if(record->event.pressed) {
-		  layer_on(_G_L);
-	  } else {
-		  layer_off(_G_L);
-	  }
-	  return false;
-	  break;
-	case G_D:
-	  if(record->event.pressed) {
-		  layer_on(_G_D);
-	  } else {
-		  layer_off(_G_D);
-	  }
-	  return false;
-	  break;
-	case GRIM:
-	  if(record->event.pressed) {
-		  layer_on(_GRIM);
-	  } else {
-		  layer_off(_GRIM);
-	  }
-	  return false;
-	  break;
+    case G_L:
+      if(record->event.pressed) {
+          layer_on(_G_L);
+      } else {
+          layer_off(_G_L);
+      }
+      return false;
+      break;
+    case G_D:
+      if(record->event.pressed) {
+          layer_on(_G_D);
+      } else {
+          layer_off(_G_D);
+      }
+      return false;
+      break;
+    case GRIM:
+      if(record->event.pressed) {
+          layer_on(_GRIM);
+      } else {
+          layer_off(_GRIM);
+      }
+      return false;
+      break;
   }
   return true;
 }
