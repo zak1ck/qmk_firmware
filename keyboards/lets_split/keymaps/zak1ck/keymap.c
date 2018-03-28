@@ -168,14 +168,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   A  |   S  |   D  |   T  | Esc  |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |      |   M  | Enter|      |Space |      |      |      |      |      |      |
+ * | Ctrl |      |   M  | Enter|   F  |Space |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_FACT] = KEYMAP( \
   KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_LALT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    TO(_G_L), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   KC_LSFT,  KC_A,    KC_S,    KC_D,    KC_T,    KC_ESC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  KC_LCTRL, XXXXXXX, KC_M,    KC_ENT,  XXXXXXX, KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+  KC_LCTRL, XXXXXXX, KC_M,    KC_ENT,  KC_F,    KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
 
 };
