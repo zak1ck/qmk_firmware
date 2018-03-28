@@ -15,6 +15,7 @@ extern keymap_config_t keymap_config;
 #define _G_L 5 // Game Layer
 #define _G_D 6 // Game Default
 #define _GRIM 7 // GrimDawn
+#define _FACT 8 // Factorio
 
 enum custom_keycodes {
   NORMAL = SAFE_RANGE,
@@ -23,7 +24,8 @@ enum custom_keycodes {
   ADJUST,
   G_L,
   G_D,
-  GRIM
+  GRIM,
+  FACT
 };
 
 // Fillers to make layering more clear
@@ -38,9 +40,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  |  Alt |Adjust|Lower |Space |Space |Raise | Left | Down |  Up  |Right |
+ * | Ctrl | GUI  |  Alt |Adjust|Lower |Space |Space |Raise |   / | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_NORMAL] = KEYMAP( \
@@ -110,16 +112,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |      |      |NORMAL|      |      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      | GRIM | G_D  |      |      |      |      |      |      |
+ * |      |      |      | FACT | GRIM | G_D  |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_G_L] = KEYMAP( \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   TO(_NORMAL), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_GRIM), TO(_G_D),    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   TO(_NORMAL), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, TO(_FACT), TO(_GRIM), TO(_G_D),    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
 
 /* Game Default
@@ -128,15 +130,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |   Q  |   W  |   E  |      | G_L  |      |      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |      |      |      |      |      |      |      |      |
+ * |      |   A  |   S  |   D  |      | Esc  |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   6  |   7  |   8  |   9  |   0  |Space        |      |      |      |      |      |
+ * |   6  |   7  |   8  |   9  |   0  |Space |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_G_D] = KEYMAP( \
   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    TO(_G_L), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, KC_A,    KC_S,    KC_D,    XXXXXXX, KC_ESC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
 ),
 
@@ -146,23 +148,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |   5  |   6  |   7  |   8  |   L  | G_L  |      |      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Esc  |      |   S  |   I  |      |      |      |      |      |      |      |      |
+ * |      |      |   S  |   I  |      | Esc  |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |   M  |   9  |   0  |Space        |      |      |      |      |      |
+ * |      |      |   M  |   9  |   0  |Space |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_GRIM] = KEYMAP( \
   KC_1,     KC_2,    KC_3, KC_4, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   KC_5,     KC_6,    KC_7, KC_8, KC_L,    TO(_G_L), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  KC_ESC,   XXXXXXX, KC_S, KC_I, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX,  XXXXXXX, KC_S, KC_I, XXXXXXX, KC_ESC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX,  XXXXXXX, KC_M, KC_9, KC_0,    KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
-)
+),
+
+/* Factorio
+ * ,-----------------------------------------------------------------------------------.
+ * |   1  |   2  |   3  |   4  |   5  | Alt  |      |      |      |      |      |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   E  |   R  | G_L  |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Shift|   A  |   S  |   D  |   T  | Esc  |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Ctrl |      |   M  | Enter|      |Space |      |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_FACT] = KEYMAP( \
+  KC_1,     KC_2,    KC_3,    KC_4,    KC_5,    KC_LALT,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    TO(_G_L), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  KC_LSFT,  KC_A,    KC_S,    KC_D,    KC_T,    KC_ESC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+  KC_LCTRL, XXXXXXX, KC_M,    KC_ENT,  XXXXXXX, KC_SPC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX \
+),
 
 };
 
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
+}
+
+void switch_game_layer(keyrecord_t *record, uint16_t layer_id) {
+  if (record->event.pressed) {
+    layer_on(layer_id);
+  } else {
+    layer_off(layer_id);
+  }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -202,27 +230,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
     case G_L:
-      if(record->event.pressed) {
-          layer_on(_G_L);
-      } else {
-          layer_off(_G_L);
-      }
+      switch_game_layer(record, _G_L);
       return false;
       break;
     case G_D:
-      if(record->event.pressed) {
-          layer_on(_G_D);
-      } else {
-          layer_off(_G_D);
-      }
+      switch_game_layer(record, _G_D);
       return false;
       break;
     case GRIM:
-      if(record->event.pressed) {
-          layer_on(_GRIM);
-      } else {
-          layer_off(_GRIM);
-      }
+      switch_game_layer(record, _GRIM);
+      return false;
+      break;
+    case FACT:
+      switch_game_layer(record, _FACT);
       return false;
       break;
   }
