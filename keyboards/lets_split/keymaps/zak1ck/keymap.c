@@ -41,16 +41,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |  ;:  |  '"  |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Ctrl |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |  ,<  |  .>  |  /?  |  \|  |
+ * | Ctrl |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |  ,<  |  .>  |  /?  | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift| GUI  |  Alt |Adjust|Lower |Sp/Sft|Et/Sft|Raise |  [{  |  ]}  |  -_  |  =+  |
+ * |  \|  | GUI  |  Alt |Adjust|Lower |Sp/Sft|Sp/Sft|Raise |  [{  |  ]}  |  -_  |  =+  |
  * `-----------------------------------------------------------------------------------'
  */
 [_NORMAL] = KEYMAP( \
   KC_ESC,   KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,          KC_Y,          KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,  KC_G,          KC_H,          KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LCTRL, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,          KC_N,          KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS, \
-  KC_LSFT,  KC_LALT, KC_LGUI, ADJUST,  LOWER, SFT_T(KC_SPC), SFT_T(KC_ENT), RAISE,   KC_LBRC, KC_RBRC, KC_MINS, KC_EQL   \
+  KC_LCTRL, KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,          KC_N,          KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
+  KC_BSLS,  KC_LALT, KC_LGUI, ADJUST,  LOWER, SFT_T(KC_SPC), SFT_T(KC_SPC), RAISE,   KC_LBRC, KC_RBRC, KC_MINS, KC_EQL   \
 ),
 
 /* Lower
